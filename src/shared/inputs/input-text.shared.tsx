@@ -3,9 +3,13 @@ import { InputTextInstruction } from '../../interfaces/form-base-instruction.int
 
 interface InputTextSharedProps {
   instruction: InputTextInstruction
+  handlerValue: any
 }
 
-const InputTextShared: FC<InputTextSharedProps> = ({ instruction }) => {
+const InputTextShared: FC<InputTextSharedProps> = ({
+  instruction,
+  handlerValue,
+}) => {
   const { label, identifier } = instruction
 
   return (
@@ -22,6 +26,7 @@ const InputTextShared: FC<InputTextSharedProps> = ({ instruction }) => {
         id={identifier}
         name={identifier}
         placeholder="Esneider Ospina"
+        onInput={handlerValue}
       />
     </div>
   )

@@ -3,9 +3,10 @@ import { SelectInstruction } from '../../interfaces/form-base-instruction.interf
 
 interface SelectSharedProps {
   instruction: SelectInstruction
+  handlerValue: any
 }
 
-const SelectShared: FC<SelectSharedProps> = ({ instruction }) => {
+const SelectShared: FC<SelectSharedProps> = ({ instruction, handlerValue }) => {
   const { label, identifier, options } = instruction
   return (
     <div>
@@ -19,6 +20,7 @@ const SelectShared: FC<SelectSharedProps> = ({ instruction }) => {
         className="h-10 w-full rounded border p-2 text-sm focus:border-pink-600 focus:outline-none bg-white"
         name={identifier}
         id={identifier}
+        onInput={handlerValue}
       >
         <option disabled selected>
           Select your country

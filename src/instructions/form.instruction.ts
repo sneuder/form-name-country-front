@@ -36,4 +36,9 @@ const formInstruction: FormInstruction = {
   },
 }
 
+export const formBaseValues = {
+  [formInstruction.fullName.identifier]: '',
+  [formInstruction.countrySelect.identifier]: '',
+}
+
 export default formInstruction
