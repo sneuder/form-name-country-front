@@ -1,9 +1,9 @@
-import { FC } from 'react'
+import { FC, ChangeEvent } from 'react'
 import { InputTextInstruction } from '../../interfaces/form-base-instruction.interface'
 
 interface InputTextSharedProps {
   instruction: InputTextInstruction
-  handlerValue: any
+  handlerValue: (event: ChangeEvent<HTMLInputElement>) => void
 }
 
 const InputTextShared: FC<InputTextSharedProps> = ({

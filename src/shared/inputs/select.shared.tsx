@@ -1,13 +1,13 @@
-import { FC } from 'react'
+import { FC, ChangeEvent } from 'react'
 import { SelectInstruction } from '../../interfaces/form-base-instruction.interface'
 
 interface SelectSharedProps {
   instruction: SelectInstruction
-  handlerValue: any
+  handlerValue: (event: ChangeEvent<HTMLSelectElement>) => void
 }
 
 const SelectShared: FC<SelectSharedProps> = ({ instruction, handlerValue }) => {
-  const { label, identifier, options } = instruction
+  const { label, identifier, options, defaultOption } = instruction
   return (
     <div>
       <label
@@ -21,9 +21,10 @@ const SelectShared: FC<SelectSharedProps> = ({ instruction, handlerValue }) => {
         name={identifier}
         id={identifier}
         onInput={handlerValue}
+        defaultValue={'default'}
       >
-        <option disabled selected>
-          Select your country
+        <option disabled value={'default'}>
+          {defaultOption}
         </option>
         {options.map((option) => (
           <option value={option.value}>{option.text}</option>

@@ -14,7 +14,9 @@ const useForm = (formBaseValues: formBaseValuesProps) => {
     setValid(false)
   }
 
-  const handleValue = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleValue = (
+    event: ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
     const value = event.target.value
     const key = event.target.name
 
