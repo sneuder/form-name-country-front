@@ -1,10 +1,29 @@
-const InputTextShared = () => {
+import { FC } from 'react'
+import { InputTextInstruction } from '../../interfaces/form-base-instruction.interface'
+
+interface InputTextSharedProps {
+  instruction: InputTextInstruction
+}
+
+const InputTextShared: FC<InputTextSharedProps> = ({ instruction }) => {
+  const { label, identifier } = instruction
+
   return (
-    <input
-      type="text"
-      className="h-10 w-full rounded border p-2 text-sm"
-      placeholder="Full Name"
-    />
+    <div>
+      <label
+        className="block text-gray-700 text-sm font-bold mb-2"
+        htmlFor={identifier}
+      >
+        {label}
+      </label>
+      <input
+        className="h-10 w-full rounded border p-2 text-sm focus:border-pink-600 focus:outline-none"
+        type="text"
+        id={identifier}
+        name={identifier}
+        placeholder="Esneider Ospina"
+      />
+    </div>
   )
 }
 
