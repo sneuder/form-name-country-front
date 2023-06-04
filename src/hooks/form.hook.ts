@@ -4,7 +4,10 @@ interface formBaseValuesProps {
   [key: string]: string | number
 }
 
-const useForm = (formBaseValues: formBaseValuesProps) => {
+const useForm = (
+  formBaseValues: formBaseValuesProps,
+  actionData: (data: any) => void
+) => {
   const [values, setValues] = useState(formBaseValues)
   const [valid, setValid] = useState(false)
 
@@ -26,6 +29,7 @@ const useForm = (formBaseValues: formBaseValuesProps) => {
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault()
     if (!valid) return
+    actionData(values)
   }
 
   useEffect(() => {

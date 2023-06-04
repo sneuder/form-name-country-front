@@ -5,10 +5,24 @@ import SubmitShared from '../shared/inputs/submit.shared'
 import formInstruction, {
   formBaseValues,
 } from '../instructions/form.instruction'
+
 import useForm from '../hooks/form.hook'
+import { useCreateUser } from '../hooks/user.hook'
+import { useGetAllCountries } from '../hooks/country.hook'
+
+import * as populateService from '../services/populate.service'
 
 const FormComp = () => {
-  const { handleSubmit, handleValue, valid } = useForm(formBaseValues)
+  const { loading, countries } = useGetAllCountries()
+  const { handleCreateUser } = useCreateUser()
+  const { handleSubmit, handleValue, valid } = useForm(
+    formBaseValues,
+    handleCreateUser
+  )
+
+  if (!loading) {
+    populateService.countryInstruction(countries, formInstruction.countrySelect)
+  }
 
   return (
     <form

@@ -12,7 +12,7 @@ export interface FormInstruction {
 
 const formInstruction: FormInstruction = {
   fullName: {
-    identifier: 'fullName',
+    identifier: 'name',
     placeHolder: 'Esneider Ospina',
     label: 'Full name',
   },
@@ -20,16 +20,7 @@ const formInstruction: FormInstruction = {
     identifier: 'country',
     label: 'Country',
     defaultOption: 'Select your country',
-    options: [
-      {
-        text: 'value',
-        value: 'value',
-      },
-      {
-        text: 'value',
-        value: 'value',
-      },
-    ],
+    options: [],
   },
   submit: {
     textValue: 'Register',

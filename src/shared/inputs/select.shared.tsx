@@ -8,6 +8,7 @@ interface SelectSharedProps {
 
 const SelectShared: FC<SelectSharedProps> = ({ instruction, handlerValue }) => {
   const { label, identifier, options, defaultOption } = instruction
+
   return (
     <div>
       <label
@@ -24,7 +25,7 @@ const SelectShared: FC<SelectSharedProps> = ({ instruction, handlerValue }) => {
         defaultValue={'default'}
       >
         <option disabled value={'default'}>
-          {defaultOption}
+          {options.length === 0 ? 'Loading data, wait...' : defaultOption}
         </option>
         {options.map((option) => (
           <option value={option.value}>{option.text}</option>
