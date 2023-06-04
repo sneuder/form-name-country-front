@@ -1,3 +1,5 @@
+import { useEffect, useMemo } from 'react'
+
 import InputTextShared from '../shared/inputs/input-text.shared'
 import SelectShared from '../shared/inputs/select.shared'
 import SubmitShared from '../shared/inputs/submit.shared'
@@ -10,19 +12,23 @@ import useForm from '../hooks/form.hook'
 import { useCreateUser } from '../hooks/user.hook'
 import { useGetAllCountries } from '../hooks/country.hook'
 
-import * as populateService from '../services/populate.service'
+import * as formatService from '../services/format.service'
 
 const FormComp = () => {
   const { loading, countries } = useGetAllCountries()
   const { handleCreateUser } = useCreateUser()
+
   const { handleSubmit, handleValue, valid } = useForm(
     formBaseValues,
     handleCreateUser
   )
 
-  if (!loading) {
-    populateService.countryInstruction(countries, formInstruction.countrySelect)
-  }
+  const countriesMemoized = useMemo(() => {
+    if (loading) return []
+    return formatService.selectCountry(countries)
+  }, [loading])
+
+  formInstruction.countrySelect.options = countriesMemoized
 
   return (
     <form
