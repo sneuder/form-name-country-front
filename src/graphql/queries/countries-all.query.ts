@@ -4,6 +4,7 @@ const GET_COUNTRIES = gql`
   query countries {
     countries {
       name
+      country
     }
   }
 `
