@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from 'react'
+import { useMemo } from 'react'
 
 import InputTextShared from '../shared/inputs/input-text.shared'
 import SelectShared from '../shared/inputs/select.shared'

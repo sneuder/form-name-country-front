@@ -3,14 +3,15 @@ import { Context } from '../context'
 import NotificationEnum from '../interfaces/enums/notification.enum'
 
 const useNotification = () => {
-  const { context, dispatchContext } = useContext(Context)
+  const { notification, dispatchContext } = useContext(Context)
 
   const setNotification = (notificationState: NotificationEnum) => {
+    if (!dispatchContext) return
     dispatchContext('notification', notificationState)
   }
 
   return {
-    notification: context.notification,
+    notification: notification,
     setNotification,
   }
 }

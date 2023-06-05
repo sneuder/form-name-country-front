@@ -3,7 +3,6 @@ import { initialContext } from '../context'
 
 const useGlobalContext = () => {
   const [context, setContext] = useState(initialContext)
-
   const dispatchContext = (property: string, value: string | number) => {
     setContext({
       ...context,
@@ -11,7 +10,8 @@ const useGlobalContext = () => {
     })
   }
 
-  return { context, dispatchContext }
+  context.dispatchContext = dispatchContext
+  return context
 }
 
 export default useGlobalContext
